@@ -38,9 +38,9 @@ See LICENSE.txt for license information.
 
 /* Define vectors of zeros and ones for use with various nc_get_varX functions */
 /* Note, this form of initialization fails under Cygwin */
-size_t NC_coord_zero[NC_MAX_VAR_DIMS] = {0};
-size_t NC_coord_one[NC_MAX_VAR_DIMS] = {1};
-ptrdiff_t NC_stride_one[NC_MAX_VAR_DIMS] = {1};
+const size_t NC_coord_zero[NC_MAX_VAR_DIMS] = {0};
+const size_t NC_coord_one[NC_MAX_VAR_DIMS] = {1};
+const ptrdiff_t NC_stride_one[NC_MAX_VAR_DIMS] = {1};
 
 /*
 static nc_type longtype = (sizeof(long) == sizeof(int)?NC_INT:NC_INT64);
@@ -54,12 +54,6 @@ NCDISPATCH_initialize(void)
     int status = NC_NOERR;
     int i;
     NCglobalstate* globalstate = NULL;
-
-    for(i=0;i<NC_MAX_VAR_DIMS;i++) {
-        NC_coord_zero[i] = 0;
-        NC_coord_one[i]  = 1;
-        NC_stride_one[i] = 1;
-    }
 
     globalstate = NC_getglobalstate(); /* will allocate and clear */
 
